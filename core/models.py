@@ -17,7 +17,7 @@ class Shanyrak(models.Model):
         on_delete=models.CASCADE, 
         related_name='shanyraks'
     )
-
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.get_type_display()} - {self.address}"
 
