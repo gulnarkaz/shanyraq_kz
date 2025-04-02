@@ -14,7 +14,7 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shanyraq-kz-y4mz.onrender.com']
 
 # Application definition
 
