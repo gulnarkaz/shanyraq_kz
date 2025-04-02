@@ -43,3 +43,9 @@ class FavoriteShanyrakSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shanyrak
         fields = ('_id', 'address')
+        
+class ShanyrakListSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='pk')
+    class Meta:
+        model = Shanyrak
+        fields = ('id', 'type', 'price', 'address', 'area', 'rooms_count')
