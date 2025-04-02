@@ -73,3 +73,14 @@ class FavoriteShanyrakListView(APIView):
         favorite_shanyraks = request.user.favorites.all()
         serializer = FavoriteShanyrakSerializer(favorite_shanyraks, many=True)
         return Response({"shanyraks": serializer.data}, status=status.HTTP_200_OK)
+    
+class RemoveFromFavoritesView(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def delete(self, request, id):
+        try:
+            shanyrak = get_object_or_404(Shanyrak, id=id)
+            request.user.favorites.remove(shanyrak)
+            return Response(status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
