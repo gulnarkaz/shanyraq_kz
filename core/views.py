@@ -79,4 +79,7 @@ class CommentDeleteView(generics.DestroyAPIView):
 
     def get_queryset(self):
         shanyrak_id = self.kwargs.get('shanyrak_id')
-        return Comment.objects.filter(shanyrak_id=shanyrak_id, author=self.request.user)
+        comment_id = self.kwargs.get('comment_id')
+        comment = get_object_or_404(Comment, id=comment_id, shanyrak_id=shanyrak_id)
+        shanyrak = get_object_or_404(Shanyrak, id=shanyrak_id, user=self.request.user)
+        return Comment.objects.filter(id=comment_id, shanyrak_id=shanyrak_id)

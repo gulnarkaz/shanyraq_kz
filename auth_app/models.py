@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from core.models import Shanyrak
 
 class User(AbstractUser):
     phone = models.CharField(max_length=20, blank=True, null=True)
@@ -16,6 +17,8 @@ class User(AbstractUser):
         related_name="auth_app_user_groups",
         related_query_name="auth_app_user",
     )
+    favorites = models.ManyToManyField(Shanyrak, related_name='favorited_by')
+
     user_permissions = models.ManyToManyField(
         Permission,
         verbose_name=('user permissions'),

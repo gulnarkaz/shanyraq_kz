@@ -35,3 +35,11 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ('id', 'content', 'created_at', 'author_id')
         read_only_fields = ('id', 'created_at', 'author_id')
+        
+class FavoriteShanyrakSerializer(serializers.ModelSerializer):
+    _id = serializers.IntegerField(source='id')
+    address = serializers.CharField()
+
+    class Meta:
+        model = Shanyrak
+        fields = ('_id', 'address')
