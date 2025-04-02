@@ -1,0 +1,1 @@
+web: gunicorn shanyraq1.wsgi
